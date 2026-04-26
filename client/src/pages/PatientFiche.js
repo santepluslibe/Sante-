@@ -309,7 +309,7 @@ export default function PatientFiche() {
     loadPatient();
     api.getVitaux(id).then(setVitaux).catch(() => {});
     api.getPhotos(id).then(setPhotos).catch(() => {});
-  }, [id]);
+  }, [id, loadPatient]);
 
   const handleSaveAlerts = async ({ allergies, medicaments }) => {
     await api.updatePatient(id, { ...patient, allergies, medicaments });

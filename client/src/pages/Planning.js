@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { api } from '../api';
 
 const TYPE_LABELS = {
@@ -15,8 +15,11 @@ export default function Planning() {
   const [editId, setEditId] = useState(null);
   const [form, setForm] = useState({ date_debut: '', date_fin: '', type_event: 'travail', titre: '', description: '', couleur: '#0C2D4E' });
 
-  const weekEnd = new Date(weekStart);
-  weekEnd.setDate(weekEnd.getDate() + 6);
+  const weekEnd = useMemo(() => {
+    const end = new Date(weekStart);
+    end.setDate(end.getDate() + 6);
+    return end;
+  }, [weekStart]);
   const weekDays = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(weekStart);
     d.setDate(d.getDate() + i);

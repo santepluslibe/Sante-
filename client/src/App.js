@@ -143,7 +143,7 @@ const NAV_ITEMS = [
 function MainApp() {
   const location  = useLocation();
   const navigate  = useNavigate();
-  const { user, logout }   = useAuth();
+  const { user }   = useAuth();
   const initials  = user ? (user.prenom?.[0] || '') + (user.nom?.[0] || '') : '?';
 
   const [notifications, setNotifications] = useState([]);

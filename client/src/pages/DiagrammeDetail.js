@@ -106,8 +106,6 @@ export default function DiagrammeDetail() {
 
   const clearSignature = () => { if (sigRef.current) sigRef.current.clear(); };
 
-  const getLegendeById = (lid) => legendes.find(l => l.id === lid);
-
   if (!diag) return <div style={{ textAlign: 'center', padding: 40, color: '#7a8499' }}>Chargement...</div>;
 
   return (
