@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../api';
 
@@ -301,9 +301,9 @@ export default function PatientFiche() {
   const [photoDesc, setPhotoDesc] = useState('');
   const fileRef = useRef();
 
-  const loadPatient = () => {
+  const loadPatient = useCallback(() => {
     api.getPatient(id).then(setPatient).catch(() => navigate('/patients'));
-  };
+  }, [id, navigate]);
 
   useEffect(() => {
     loadPatient();
